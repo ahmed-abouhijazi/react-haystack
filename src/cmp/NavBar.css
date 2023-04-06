@@ -1,0 +1,154 @@
+nav {
+    /* background-color: #333; */
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    align-items:stretch;
+    padding: 10px;
+    position: relative;
+  }
+  
+  nav img {
+    position: absolute;
+    left: 20px;
+    top: 60%;
+    flex-grow: 2;
+    transform: translateY(-50%);
+    height: 45px;
+  } 
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    flex-grow: 8;
+    justify-content: flex-end; /*Move navigation elements to the right */
+  }
+
+  nav ul li.connect {
+    /* ... */
+    /* margin-left: auto; */
+    /* right: -525px; */
+    justify-items: flex-end;
+  }
+  nav ul li.element {
+    /* ... */
+    /* margin-left: auto; */
+    justify-items: flex-end;
+    /* justify-content: flex-end; */
+  }
+
+  nav ul li.connect a {
+    /* ... */
+    background-color: #48BB78;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  nav ul li {
+    margin: 10px 20px;
+    position: relative;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  nav ul li a:hover {
+    background-color: #fff;
+    color: #333;
+  }
+
+  nav ul li.element:hover::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: calc(50% + -52px);
+    transform: translateY(-50%);
+    background-image: url('/public/img/needle-and-thread.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  nav ul li.element:hover::before {
+    opacity: 1;
+  transform: translateY(-50%) translateX(-5px);
+  z-index: 1; /* Set a negative z-index to position the pseudo-element behind the nav item */
+  }
+
+  nav ul li.connect {
+    position: relative;
+  }
+  
+  nav ul li.connect .connect-block {
+    position: absolute;
+    left: -60%;
+    width: 200px;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  nav ul li.connect .connect-block form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav ul li.connect .connect-block label {
+    margin-bottom: 0.5em;
+  }
+  
+  nav ul li.connect .connect-block select,
+  nav ul li.connect .connect-block button {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  nav ul li.connect .connect-block select {
+    width: 100%;
+    border: 1px solid #38A169;
+  }
+
+  nav ul li.connect button {
+    background-color: #48BB78;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  nav ul li.connect .connect-block button {
+    background-color: #48BB78;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav ul li.connect .connect-block button:hover {
+    background-color: #38A169;
+  }
+
+  
+  
