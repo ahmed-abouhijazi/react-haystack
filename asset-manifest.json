@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-haystack/static/css/main.04d2aa4a.css",
+    "main.js": "/react-haystack/static/js/main.ecdac5bb.js",
+    "static/js/787.14d157a8.chunk.js": "/react-haystack/static/js/787.14d157a8.chunk.js",
+    "static/media/stock-vector.jpg": "/react-haystack/static/media/stock-vector.e479145895484dd4f5fe.jpg",
+    "index.html": "/react-haystack/index.html",
+    "main.04d2aa4a.css.map": "/react-haystack/static/css/main.04d2aa4a.css.map",
+    "main.ecdac5bb.js.map": "/react-haystack/static/js/main.ecdac5bb.js.map",
+    "787.14d157a8.chunk.js.map": "/react-haystack/static/js/787.14d157a8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04d2aa4a.css",
+    "static/js/main.ecdac5bb.js"
+  ]
+}
