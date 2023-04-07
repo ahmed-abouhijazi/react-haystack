@@ -32,7 +32,7 @@ function App() {
     
       <NavBar />
       <div class="gif-container">
-    <img src="/img/giphy.gif" alt="Your GIF" />
+    <img src="/react-haystack/img/giphy.gif" alt="Your GIF" />
     <div className="timer">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>
 
   </div>

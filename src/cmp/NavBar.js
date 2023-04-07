@@ -32,7 +32,7 @@ function NavBar() {
   };
   return (
     <nav>
-      <img src="./react-haystack/img/Website_logo.png" alt="Logo" />
+      <img src="/react-haystack/img/Website_logo.png" alt="Logo" />
       <ul>
         <li className="element" ><a href="http://localhost:3000">Home</a></li>
         <li className="element" ><a href="http://localhost:3000">About</a></li>
