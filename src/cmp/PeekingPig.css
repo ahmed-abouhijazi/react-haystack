@@ -1,0 +1,19 @@
+.peeking-pig {
+    position: fixed;
+    right: -200px;
+    bottom: 5%;
+    transform: translateY(50%);
+    transition: right 0.5s ease;
+  }
+  
+  .peeking-pig.peeking {
+    right: -50px;
+    transition: right 0.3s ease;
+  }
+  
+  .peeking-pig img {
+    width: 100px;
+    height: auto;
+    /* border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+  }

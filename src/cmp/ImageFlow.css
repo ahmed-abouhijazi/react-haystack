@@ -1,0 +1,23 @@
+.image-flow {
+    top: 45%;
+    position: fixed;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  
+  .image-flow img {
+    flex-shrink: 0;
+    width: 10%;
+    height: auto;
+    animation: slide-in 2s linear infinite;
+  }
+  
+  @keyframes slide-in {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(1000%);
+    }
+  }
