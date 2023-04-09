@@ -1,3 +1,4 @@
 img/AdobeStock.gif filter=lfs diff=lfs merge=lfs -text
 public/img/AdobeStock.gif filter=lfs diff=lfs merge=lfs -text
+public/img/AdobeStock.gif01~ filter=lfs diff=lfs merge=lfs -text
 *.gif1~ filter=lfs diff=lfs merge=lfs -text
