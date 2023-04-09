@@ -34,9 +34,9 @@ function NavBar() {
     <nav>
       <img src="/react-haystack/img/Website_logo.png" alt="Logo" />
       <ul>
-        <li className="element" ><a href="http://localhost:3000">Home</a></li>
-        <li className="element" ><a href="http://localhost:3000">About</a></li>
-        <li className="element" ><a href="http://localhost:3000">Contact</a></li>
+        <li className="element" ><a href="https://ahmed-abouhijazi.github.io/react-haystack">Home</a></li>
+        <li className="element" ><a href="https://ahmed-abouhijazi.github.io/react-haystack">About</a></li>
+        <li className="element" ><a href="https://ahmed-abouhijazi.github.io/react-haystack">Contact</a></li>
         <li className="connect">
           <button className="connect-button" onClick={() => setShowConnectBlock(!showConnectBlock)}>Connect</button>
           {showConnectBlock && (
