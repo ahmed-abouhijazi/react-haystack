@@ -9,6 +9,7 @@ function App() {
   const [time, setTime] = useState({ minutes: 50, seconds: 0 });
   const intervalId = useRef(null)
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -43,6 +44,7 @@ function App() {
   };
   const handleConfirmClick = () => {
     setIsPopupOpen(false);
+    setIsConnectOpen(false);
     setIsLoading(true);
 
     const intervalId = setInterval(() => {
@@ -54,9 +56,9 @@ function App() {
   const { minutes, seconds } = time;
   return (
     <div className="container">
-      <NavBar />
+      <NavBar setIsConnectOpen={setIsConnectOpen}/>
       <PeekingPig />
-      <div class="gif-container">
+      <div className="gif-container">
         <img src="/react-haystack/img/giphy.gif" alt="Your GIF" />
         <div className="timer">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>
 
@@ -69,6 +71,13 @@ function App() {
         <h2>Request Ticket</h2>
         <div className="popup-body">
           <img src="/react-haystack/img/GoldenTicket.png" alt="Ticket" className="ticket-image" /> <h2> x 1</h2>
+          <button className="confirm-btn" onClick={handleConfirmClick}>Confirm</button>
+        </div>
+      </Popup>
+      <Popup isOpen={isConnectOpen} onClose={handleClosePopup}>
+        <h4>Connect your wallet</h4>
+        <span className='Connect-details'>If you don't have a wallet, you can select a provider and create one now.</span>
+        <div className="popup-body">
           <button className="confirm-btn" onClick={handleConfirmClick}>Confirm</button>
         </div>
       </Popup>

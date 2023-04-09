@@ -129,7 +129,7 @@ nav {
     border: 1px solid #38A169;
   }
 
-  nav ul li.connect button {
+  /* nav ul li.connect button {
     background-color: #48BB78;
     color: white;
     padding: 8px 12px;
@@ -137,7 +137,92 @@ nav {
     border: none;
     cursor: pointer;
     
+  } */
+
+  .button-container {
+    display: flex;
   }
+  
+  .left-button {
+    padding: 8px 20px 8px 0px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+  }
+  
+  .right-button {
+    padding: 8px 12px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+  .left-button, .right-button {
+    font-size: 15px;
+    background-color: transparent;;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); */
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    /* box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px; */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .left-button {
+    margin-right: 0px;
+  }
+  
+  .right-button {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .left-button:hover, .right-button:hover {
+    background-color: rgba(252, 184, 95, 0.3);
+  }
+  .right-button {
+    position: relative;
+    padding-right: 50px; /* adjust this value to create space for the image */
+  }
+  .left-button {
+    position: relative;
+    padding-left: 50px; /* adjust this value to create space for the image */
+  }
+
+  .left-button img {
+    position: absolute;
+    width: 13%;
+    height: auto;
+    transform: translateY(-70%);
+  }
+  
+  .right-button img {
+    position: absolute;
+    width: 45%;
+    height: auto;
+    top: 50%;
+    right: 20px; /* adjust this value to position the image */
+    transform: translateY(-50%);
+  }
+
+  /******Drop Down Menu********/
+
+
+  .hovered-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+  .hover-button:hover + .hovered-options {
+    display: block;
+  }
+  .hover-button:hover +.hovered-options ul:hover {
+    display: block;
+  }
+
+  /********************/
   
   nav ul li.connect .connect-block button {
     background-color: #48BB78;
