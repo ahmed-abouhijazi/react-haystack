@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/react-haystack/static/css/main.f95164ef.css",
-    "main.js": "/react-haystack/static/js/main.a3e05766.js",
+    "main.js": "/react-haystack/static/js/main.c47108bf.js",
     "static/js/787.14d157a8.chunk.js": "/react-haystack/static/js/787.14d157a8.chunk.js",
     "static/media/GoldenTicket.png": "/react-haystack/static/media/GoldenTicket.daed4ae41f37a5e5d537.png",
     "static/media/stock-vector.jpg": "/react-haystack/static/media/stock-vector.e479145895484dd4f5fe.jpg",
     "index.html": "/react-haystack/index.html",
     "main.f95164ef.css.map": "/react-haystack/static/css/main.f95164ef.css.map",
-    "main.a3e05766.js.map": "/react-haystack/static/js/main.a3e05766.js.map",
+    "main.c47108bf.js.map": "/react-haystack/static/js/main.c47108bf.js.map",
     "787.14d157a8.chunk.js.map": "/react-haystack/static/js/787.14d157a8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f95164ef.css",
-    "static/js/main.a3e05766.js"
+    "static/js/main.c47108bf.js"
   ]
 }
