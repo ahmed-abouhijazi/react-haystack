@@ -11,6 +11,7 @@ function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
 
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
+    setIsConnectOpen(false);
   };
   const handleConfirmClick = () => {
     setIsPopupOpen(false);
@@ -78,7 +80,18 @@ function App() {
         <h4>Connect your wallet</h4>
         <span className='Connect-details'>If you don't have a wallet, you can select a provider and create one now.</span>
         <div className="popup-body">
-          <button className="confirm-btn" onClick={handleConfirmClick}>Confirm</button>
+          <ul className='dropDown'>
+            <li><img  src='/react-haystack/logos/MetaMask_Fox.svg' alt='MetaMask' /><span className='WalletName'>MetaMask</span><span className='WalletDesc'>POPULAR</span></li>
+            <li><img  src='/react-haystack/logos/coinbase-logo.svg' alt='coinbase-logo' />Coinbase Wallet</li>
+            <li><img  src='/react-haystack/logos/wallet-connect-logo.svg' alt='wallet-connect-logo' />WalletConnect</li>
+            <li><img  src='/react-haystack/logos/ledger-logo.svg' alt='ledger-logo' />Ledger</li>
+            <li><img  src='/react-haystack/logos/phantom-icon-purple.svg' alt='phantom-icon-purple' />Phantom</li>
+            <li><img  src='/react-haystack/logos/bitkeep-wallet.jpg' alt='bitkeep-wallet' />BitKeep</li>
+            {showMore && (
+            <li><img  src='/react-haystack/logos/CoreWallet.svg' alt='CoreWallet' />Core</li>
+            )}
+          </ul>
+          <button className="confirm-btn" onClick={() => setShowMore(!showMore)}>{!showMore ? 'Show more':'Show less'}</button>
         </div>
       </Popup>
       <Popup isOpen={isLoading} isloading={isLoading}>

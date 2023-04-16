@@ -216,11 +216,13 @@ nav {
   top: 100%;
   background-color: white;
   border-radius: 15px;
-  padding: 0;
+  padding-top: 2%;
   list-style: none;
   display: flex;
+  gap: 0px;
   flex-direction: column;
-  width: 100%;
+  width: 65%;
+  height: auto;
   }
   .darkMode{
     background-color: rgb(76, 75, 75);
@@ -234,9 +236,10 @@ nav {
     padding-top:16px;
     padding-bottom:16px;
     position: relative;
-    padding-left: 35%; 
-    margin: 5px 5px;
+    padding-left: 20%; 
+    margin: 1px 5px;
     list-style: none;
+    align-content: center;
     cursor: pointer;
     z-index: 1;
     animation: float 1s ease-in-out infinite;
@@ -257,13 +260,14 @@ nav {
   }
   .dropdown li img {
     position: absolute;
-    width: 13%;
+    left: 4%;
+    width: 12%;
     height: auto;
     transform: translateY(-75%);
   }
-  .dropdown li .support {
+  /* .dropdown li .support {
     width: 16%;
-  }
+  } */
   
   /********************/
   

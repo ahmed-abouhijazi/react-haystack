@@ -37,9 +37,9 @@ function NavBar(props) {
             {isOpen && (
               <div className="">
                 <ul className={isDarkMode ? 'dropdown darkMode' : 'dropdown'}>
-                  <li><img src="/react-haystack/img/avatar.png" alt='profile' /><strong>Profile</strong></li>
-                  <li><img className='support' src="/react-haystack/img/centre-dappel.png" alt='Support' /> <strong>Centre d'aide</strong></li>
-                  <li><img src="/react-haystack/img/parametres.png" alt='Paramètres' /><strong>Paramètres</strong></li>
+                  <li><img src="/react-haystack/img/avatar.png" alt='profile' />Profile</li>
+                  <li><img className='support' src="/react-haystack/img/centre-dappel.png" alt='Support' /> Centre d'aide</li>
+                  <li><img src="/react-haystack/img/parametres.png" alt='Paramètres' />Paramètres</li>
                   <li className={isDarkMode ? 'Toggle ToggleDark' : 'Toggle'}><label className="switch">
                     <input type="checkbox" onClick={()=> setIsDarkMode(!isDarkMode)}/>
                     <span className="slider"></span>
