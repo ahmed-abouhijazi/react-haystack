@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import NavBar from './cmp/NavBar';
 import Popup from './cmp/Popup';
@@ -51,14 +51,14 @@ function App() {
 
     const intervalId = setInterval(() => {
       setIsLoading(false);
-    },5000);
+    }, 5000);
     return () => clearInterval(intervalId);
   };
 
   const { minutes, seconds } = time;
   return (
     <div className="container">
-      <NavBar setIsConnectOpen={setIsConnectOpen}/>
+      <NavBar setIsConnectOpen={setIsConnectOpen} />
       <PeekingPig />
       <div className="gif-container">
         <img src="/react-haystack/img/giphy.gif" alt="Your GIF" />
@@ -81,21 +81,39 @@ function App() {
         <span className='Connect-details'>If you don't have a wallet, you can select a provider and create one now.</span>
         <div className="popup-body">
           <ul className='dropDown'>
-            <li><img  src='/react-haystack/logos/MetaMask_Fox.svg' alt='MetaMask' /><span className='WalletName'>MetaMask</span><span className='WalletDesc'>POPULAR</span></li>
-            <li><img  src='/react-haystack/logos/coinbase-logo.svg' alt='coinbase-logo' />Coinbase Wallet</li>
-            <li><img  src='/react-haystack/logos/wallet-connect-logo.svg' alt='wallet-connect-logo' />WalletConnect</li>
-            <li><img  src='/react-haystack/logos/ledger-logo.svg' alt='ledger-logo' />Ledger</li>
-            <li><img  src='/react-haystack/logos/phantom-icon-purple.svg' alt='phantom-icon-purple' />Phantom</li>
-            <li><img  src='/react-haystack/logos/bitkeep-wallet.jpg' alt='bitkeep-wallet' />BitKeep</li>
+            <li><img src='/react-haystack/logos/MetaMask_Fox.svg' alt='MetaMask' /><span className='WalletName'>MetaMask</span><span className='WalletDesc'>POPULAR</span></li>
+            <li><img src='/react-haystack/logos/coinbase-logo.svg' alt='coinbase-logo' />Coinbase Wallet</li>
+            <li><img src='/react-haystack/logos/wallet-connect-logo.svg' alt='wallet-connect-logo' />WalletConnect</li>
+            <li><img src='/react-haystack/logos/ledger-logo.svg' alt='ledger-logo' />Ledger</li>
+            <li><img src='/react-haystack/logos/phantom-icon-purple.svg' alt='phantom-icon-purple' />Phantom</li>
+            <li><img src='/react-haystack/logos/bitkeep-wallet.jpg' alt='bitkeep-wallet' />BitKeep</li>
             {showMore && (
-            <li><img  src='/react-haystack/logos/CoreWallet.svg' alt='CoreWallet' />Core</li>
+              <li><img src='/react-haystack/logos/CoreWallet.svg' alt='CoreWallet' />Core</li>
             )}
           </ul>
-          <button className="confirm-btn" onClick={() => setShowMore(!showMore)}>{!showMore ? 'Show more':'Show less'}</button>
+          <button className="confirm-btn" onClick={() => setShowMore(!showMore)}>{!showMore ? 'Show more' : 'Show less'}</button>
         </div>
       </Popup>
       <Popup isOpen={isLoading} isloading={isLoading}>
-          <img src="/react-haystack/img/reveal-loading.gif" alt="Ticket" className="Loading" />
+        {/* <img src="/react-haystack/img/reveal-loading.gif" alt="Ticket" className="Loading" /> */}
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+          <div className="wheel"></div>
+          <div className="hamster">
+            <div className="hamster__body">
+              <div className="hamster__head">
+                <div className="hamster__ear"></div>
+                <div className="hamster__eye"></div>
+                <div className="hamster__nose"></div>
+              </div>
+              <div className="hamster__limb hamster__limb--fr"></div>
+              <div className="hamster__limb hamster__limb--fl"></div>
+              <div className="hamster__limb hamster__limb--br"></div>
+              <div className="hamster__limb hamster__limb--bl"></div>
+              <div className="hamster__tail"></div>
+            </div>
+          </div>
+          <div className="spoke"></div>
+        </div>
       </Popup>
     </div>
   );

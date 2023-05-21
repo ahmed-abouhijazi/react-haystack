@@ -23,7 +23,7 @@ nav {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 0px;
     flex-grow: 8;
     justify-content: flex-end; /*Move navigation elements to the right */
   }
@@ -37,7 +37,15 @@ nav {
   nav ul li.element {
     /* ... */
     /* margin-left: auto; */
+    margin-top: 0.6%;
     justify-items: flex-end;
+    background-color: transparent;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); */
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: none;
+    border-radius:7px;
+    padding: 8px 3px;
+    
     /* justify-content: flex-end; */
   }
 
@@ -57,6 +65,9 @@ nav {
   
   nav ul li a {
     color: #fff;
+
+
+    
     text-decoration: none;
     padding: 5px;
     border-radius: 5px;
@@ -156,7 +167,7 @@ nav {
   }
   .left-button, .right-button {
     font-size: 15px;
-    background-color: transparent;;
+    background-color: transparent;
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); */
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     /* box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px; */

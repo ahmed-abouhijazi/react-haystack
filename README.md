@@ -17,3 +17,6 @@ Winnig Effects
 Draw a random Ticket Effect (Storm Or Rolling weel)
 Change the timer to the Reveal mode
 Integrating the BackEnd
+
+Structions : 
+1 - Create .env file with the following code : GENERATE_SOURCEMAP=false
