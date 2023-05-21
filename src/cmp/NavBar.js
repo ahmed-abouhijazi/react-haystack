@@ -33,9 +33,14 @@ window.ethereum.on('accountsChanged', (accounts) => {
   console.log('Account changed:', accounts[0]);
   // Update button label
   const connectedButton = document.getElementById('connected-button');
-  if (connectedButton) {
-    connectedButton.textContent = `Connected: ${accounts[0].substring(0, 6)}...`;
-  }
+
+    if (connectedButton && accounts[0]) {
+      setConnectdButton(`Connected: ${accounts[0].substring(0, 6)}...`);
+    }
+    else if (accounts[0] === undefined){
+      setConnectedAccount(null);
+      setConnectdButton('Connect Wallet');
+    }
 });
 
 const connectWallet = async () => {
@@ -72,7 +77,7 @@ const connectWallet = async () => {
     
     // Update button label
     const connectedButton = document.getElementById('connected-button');
-    if (connectedButton) {
+    if (connectedButton && accounts[0]) {
       setConnectdButton(`Connected: ${accounts[0].substring(0, 6)}...`);
     }
     
