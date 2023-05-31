@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import NavBar from './cmp/NavBar';
+import CountdownComponent from './cmp/CountdownComponent';
 import Popup from './cmp/Popup';
 import PeekingPig from './cmp/PeekingPig';
 // import ImageFlow from './cmp/ImageFlow';
 
 function App() {
-  const [time, setTime] = useState({ minutes: 50, seconds: 0 });
+  //const [time, setTime] = useState({ minutes: 50, seconds: 0 });
   const intervalId = useRef(null)
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isConnectOpen, setIsConnectOpen] = useState(false);
@@ -16,23 +17,23 @@ function App() {
 
   useEffect(() => {
     const updateTimer = () => {
-      setTime(prevTime => {
-        const { minutes, seconds } = prevTime;
-        if (minutes === 0 && seconds === 0) {
-          clearInterval(intervalId);
-          return prevTime;
-        }
-        if (seconds === 0) {
-          return { minutes: minutes - 1, seconds: 59 };
-        }
-        return { minutes, seconds: seconds - 1 };
-      });
+      // setTime(prevTime => {
+      //   const { minutes, seconds } = prevTime;
+      //   if (minutes === 0 && seconds === 0) {
+      //     clearInterval(intervalId);
+      //     return prevTime;
+      //   }
+      //   if (seconds === 0) {
+      //     return { minutes: minutes - 1, seconds: 59 };
+      //   }
+      //   return { minutes, seconds: seconds - 1 };
+      // });
     };
     const newIntervalId = setInterval(updateTimer, 1000);
     intervalId.current = newIntervalId;
 
     return () => clearInterval(newIntervalId);
-  }, [setTime, intervalId]);
+  }, [intervalId]);
 
 
 
@@ -55,16 +56,22 @@ function App() {
     return () => clearInterval(intervalId);
   };
 
-  const { minutes, seconds } = time;
+  //const { minutes, seconds } = time;
   return (
     <div className="container">
       <NavBar setIsConnectOpen={setIsConnectOpen} />
+
+      {/* Timer Code  */}
+
+      <CountdownComponent />
+
+      {/* Timer Code  */}
       <PeekingPig />
-      <div className="gif-container">
+      {/* <div className="gif-container">
         <img src="/react-haystack/img/giphy.gif" alt="Your GIF" />
         <div className="timer">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</div>
 
-      </div>
+      </div> */}
       <div className="btn-container">
         <button onClick={handleRequestClick}>Request</button>
         <button>Buy</button>
