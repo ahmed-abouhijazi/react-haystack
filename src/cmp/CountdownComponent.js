@@ -1,213 +1,177 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { TweenMax, Quart } from 'gsap';
 import './CountdownComponent.css';
-// import { TweenMax, Quart } from 'gsap';
+
 
 const CountdownComponent = () => {
-//   const countdownRef = useRef(null);
+  useEffect(() => {
+    const $el = document.querySelector('.countdown');
+    const $hours = $el.querySelectorAll('.bloc-time.hours .figure');
+    const $minutes = $el.querySelectorAll('.bloc-time.min .figure');
+    const $seconds = $el.querySelectorAll('.bloc-time.sec .figure');
 
-//   useEffect(() => {
-//     const Countdown = {
-//       $el: null,
-//       countdown_interval: null,
-//       total_seconds: 0,
-//       $: {
-//         hours: null,
-//         minutes: null,
-//         seconds: null,
-//       },
-//       values: {
-//         hours: 0,
-//         minutes: 0,
-//         seconds: 0,
-//       },
+    let countdownInterval = null;
+    let totalSeconds = 0;
+    let values = {
+      hours: parseInt($hours[0].parentNode.getAttribute('data-init-value')),
+      minutes: parseInt($minutes[0].parentNode.getAttribute('data-init-value')),
+      seconds: parseInt($seconds[0].parentNode.getAttribute('data-init-value')),
+    };
 
-//       init: function () {
-//         this.$el = countdownRef.current;
+    const animateFigure = ($el, value) => {
+      const $top = $el.querySelector('.top');
+      const $bottom = $el.querySelector('.bottom');
+      const $backTop = $el.querySelector('.top-back');
+      const $backBottom = $el.querySelector('.bottom-back');
 
-//         this.$.hours = this.$el.querySelector('.bloc-time.hours .figure');
-//         this.$.minutes = this.$el.querySelector('.bloc-time.min .figure');
-//         this.$.seconds = this.$el.querySelector('.bloc-time.sec .figure');
+      $backTop.querySelector('span').innerHTML = value;
+      $backBottom.querySelector('span').innerHTML = value;
 
-//         this.values = {
-//           hours: parseInt(this.$.hours.parentElement.getAttribute('data-init-value')),
-//           minutes: parseInt(this.$.minutes.parentElement.getAttribute('data-init-value')),
-//           seconds: parseInt(this.$.seconds.parentElement.getAttribute('data-init-value')),
-//         };
+      TweenMax.to($top, 0.8, {
+        rotationX: '-180deg',
+        transformPerspective: 300,
+        ease: Quart.easeOut,
+        onComplete: function () {
+          $top.innerHTML = value;
+          $bottom.innerHTML = value;
+          TweenMax.set($top, { rotationX: 0 });
+        },
+      });
 
-//         this.total_seconds = this.values.hours * 60 * 60 + this.values.minutes * 60 + this.values.seconds;
+      TweenMax.to($backTop, 0.8, {
+        rotationX: 0,
+        transformPerspective: 300,
+        ease: Quart.easeOut,
+        clearProps: 'all',
+      });
+    };
 
-//         this.count();
-//       },
+    const checkHour = (value, $el1, $el2) => {
+      const val1 = value.toString().charAt(0);
+      const val2 = value.toString().charAt(1);
+      const fig1Value = $el1.querySelector('.top').innerHTML;
+      const fig2Value = $el2.querySelector('.top').innerHTML;
 
-//       count: function () {
-//         const that = this;
-//         const $hour_1 = this.$.hours.querySelector('.top');
-//         const $hour_2 = this.$.hours.nextElementSibling.querySelector('.top');
-//         const $min_1 = this.$.minutes.querySelector('.top');
-//         const $min_2 = this.$.minutes.nextElementSibling.querySelector('.top');
-//         const $sec_1 = this.$.seconds.querySelector('.top');
-//         const $sec_2 = this.$.seconds.nextElementSibling.querySelector('.top');
+      if (value >= 10) {
+        if (fig1Value !== val1) animateFigure($el1, val1);
+        if (fig2Value !== val2) animateFigure($el2, val2);
+      } else {
+        if (fig1Value !== '0') animateFigure($el1, 0);
+        if (fig2Value !== val1) animateFigure($el2, val1);
+      }
+    };
 
-//         this.countdown_interval = setInterval(function () {
-//           if (that.total_seconds > 0) {
-//             --that.values.seconds;
+    const count = () => {
+      countdownInterval = setInterval(() => {
+        if (totalSeconds > 0) {
+          --values.seconds;
 
-//             if (that.values.minutes >= 0 && that.values.seconds < 0) {
-//               that.values.seconds = 59;
-//               --that.values.minutes;
-//             }
+          if (values.minutes >= 0 && values.seconds < 0) {
+            values.seconds = 59;
+            --values.minutes;
+          }
 
-//             if (that.values.hours >= 0 && that.values.minutes < 0) {
-//               that.values.minutes = 59;
-//               --that.values.hours;
-//             }
+          if (values.hours >= 0 && values.minutes < 0) {
+            values.minutes = 59;
+            --values.hours;
+          }
 
-//             that.checkHour(that.values.hours, $hour_1, $hour_2);
-//             that.checkHour(that.values.minutes, $min_1, $min_2);
-//             that.checkHour(that.values.seconds, $sec_1, $sec_2);
+          checkHour(values.hours, $hours[0], $hours[1]);
+          checkHour(values.minutes, $minutes[0], $minutes[1]);
+          checkHour(values.seconds, $seconds[0], $seconds[1]);
 
-//             --that.total_seconds;
-//           } else {
-//             clearInterval(that.countdown_interval);
-//           }
-//         }, 1000);
-//       },
+          --totalSeconds;
+        } else {
+          clearInterval(countdownInterval);
+        }
+      }, 1000);
+    };
 
-//       animateFigure: function ($el, value) {
-//         const $top = $el.querySelector('.top');
-//         const $back_top = $el.querySelector('.top-back');
-//         const $bottom = $el.querySelector('.bottom');
-//         const $back_bottom = $el.querySelector('.bottom-back');
+    totalSeconds = values.hours * 60 * 60 + values.minutes * 60 + values.seconds;
+    count();
 
-//         $back_top.querySelector('span').innerHTML = value;
-//         $back_bottom.querySelector('span').innerHTML = value;
-
-//         TweenMax.to($top, 0.8, {
-//           rotationX: '-180deg',
-//           transformPerspective: 300,
-//           ease: Quart.easeOut,
-//           onComplete: function () {
-//             $top.innerHTML = value;
-//             $bottom.innerHTML = value;
-//             TweenMax.set($top, { rotationX: 0 });
-//           },
-//         });
-
-//         TweenMax.to($back_top, 0.8, {
-//           rotationX: 0,
-//           transformPerspective: 300,
-//           ease: Quart.easeOut,
-//           clearProps: 'all',
-//         });
-//       },
-
-//       checkHour: function (value, $el_1, $el_2) {
-//         const val_1 = value.toString().charAt(0);
-//         const val_2 = value.toString().charAt(1);
-//         const fig_1_value = $el_1.querySelector('.top').innerHTML;
-//         const fig_2_value = $el_2.querySelector('.top').innerHTML;
-
-//         if (value >= 10) {
-//           if (fig_1_value !== val_1) this.animateFigure($el_1, val_1);
-//           if (fig_2_value !== val_2) this.animateFigure($el_2, val_2);
-//         } else {
-//           if (fig_1_value !== '0') this.animateFigure($el_1, '0');
-//           if (fig_2_value !== val_1) this.animateFigure($el_2, val_1);
-//         }
-//       },
-//     };
-
-//     Countdown.init();
-
-//     return () => {
-//       clearInterval(Countdown.countdown_interval);
-//     };
-//   }, []);
+    return () => {
+      clearInterval(countdownInterval);
+    };
+  }, []);
 
   return (
-    <div class="wrap">  
-  <h1>Reveal <strong>Countdown</strong></h1>
-
-  <div class="countdown">
-    <div class="bloc-time hours" data-init-value="24">
-      <span class="count-title">Hours</span>
-
-      <div class="figure hours hours-1">
-        <span class="top">2</span>
-        <span class="top-back">
-          <span>2</span>
-        </span>
-        <span class="bottom">2</span>
-        <span class="bottom-back">
-          <span>2</span>
-        </span>
-      </div>
-
-      <div class="figure hours hours-2">
-        <span class="top">4</span>
-        <span class="top-back">
-          <span>4</span>
-        </span>
-        <span class="bottom">4</span>
-        <span class="bottom-back">
-          <span>4</span>
-        </span>
-      </div>
-    </div>
-
-    <div class="bloc-time min" data-init-value="0">
-      <span class="count-title">Minutes</span>
-
-      <div class="figure min min-1">
-        <span class="top">0</span>
-        <span class="top-back">
-          <span>0</span>
-        </span>
-        <span class="bottom">0</span>
-        <span class="bottom-back">
-          <span>0</span>
-        </span>        
-      </div>
-
-      <div class="figure min min-2">
-       <span class="top">0</span>
-        <span class="top-back">
-          <span>0</span>
-        </span>
-        <span class="bottom">0</span>
-        <span class="bottom-back">
-          <span>0</span>
-        </span>
-      </div>
-    </div>
-
-    <div class="bloc-time sec" data-init-value="0">
-      <span class="count-title">Seconds</span>
-
-        <div class="figure sec sec-1">
-        <span class="top">0</span>
-        <span class="top-back">
-          <span>0</span>
-        </span>
-        <span class="bottom">0</span>
-        <span class="bottom-back">
-          <span>0</span>
-        </span>          
-      </div>
-
-      <div class="figure sec sec-2">
-        <span class="top">0</span>
-        <span class="top-back">
-          <span>0</span>
-        </span>
-        <span class="bottom">0</span>
-        <span class="bottom-back">
-          <span>0</span>
-        </span>
+    <div className="wrap">
+      <h1>
+        Reveal <strong>Countdown</strong>
+      </h1>
+      <div className="countdown">
+        <div className="bloc-time hours" data-init-value="24">
+          <span className="count-title">Hours</span>
+          <div className="figure hours hours-1">
+            <span className="top">2</span>
+            <span className="top-back">
+              <span>2</span>
+            </span>
+            <span className="bottom">2</span>
+            <span className="bottom-back">
+              <span>2</span>
+            </span>
+          </div>
+          <div className="figure hours hours-2">
+            <span className="top">4</span>
+            <span className="top-back">
+              <span>4</span>
+            </span>
+            <span className="bottom">4</span>
+            <span className="bottom-back">
+              <span>4</span>
+            </span>
+          </div>
+        </div>
+        <div className="bloc-time min" data-init-value="0">
+          <span className="count-title">Minutes</span>
+          <div className="figure min min-1">
+            <span className="top">0</span>
+            <span className="top-back">
+              <span>0</span>
+            </span>
+            <span className="bottom">0</span>
+            <span className="bottom-back">
+              <span>0</span>
+            </span>
+          </div>
+          <div className="figure min min-2">
+            <span className="top">0</span>
+            <span className="top-back">
+              <span>0</span>
+            </span>
+            <span className="bottom">0</span>
+            <span className="bottom-back">
+              <span>0</span>
+            </span>
+          </div>
+        </div>
+        <div className="bloc-time sec" data-init-value="0">
+          <span className="count-title">Seconds</span>
+          <div className="figure sec sec-1">
+            <span className="top">0</span>
+            <span className="top-back">
+              <span>0</span>
+            </span>
+            <span className="bottom">0</span>
+            <span className="bottom-back">
+              <span>0</span>
+            </span>
+          </div>
+          <div className="figure sec sec-2">
+            <span className="top">0</span>
+            <span className="top-back">
+              <span>0</span>
+            </span>
+            <span className="bottom">0</span>
+            <span className="bottom-back">
+              <span>0</span>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
   );
 };
 
