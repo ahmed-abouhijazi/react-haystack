@@ -27,7 +27,8 @@ function NavBar(props) {
     };
   }, []);
 
-  // Detect account change
+  if (typeof window.ethereum !== 'undefined') {
+      // Detect account change
 window.ethereum.on('accountsChanged', (accounts) => {
   // Handle account change
   console.log('Account changed:', accounts[0]);
@@ -42,6 +43,8 @@ window.ethereum.on('accountsChanged', (accounts) => {
       setConnectdButton('Connect Wallet');
     }
 });
+  }
+
 
 const connectWallet = async () => {
   if (typeof window.ethereum === 'undefined') {
