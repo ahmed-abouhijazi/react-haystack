@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-haystack/static/css/main.78a1cb3e.css",
-    "main.js": "/react-haystack/static/js/main.d9e61834.js",
+    "main.js": "/react-haystack/static/js/main.215fa97b.js",
     "static/js/27.9e9dc372.chunk.js": "/react-haystack/static/js/27.9e9dc372.chunk.js",
     "static/media/output.png": "/react-haystack/static/media/output.0aa03688d62107b15e2f.png",
     "static/media/GoldenTicket.png": "/react-haystack/static/media/GoldenTicket.daed4ae41f37a5e5d537.png",
@@ -9,6 +9,6 @@
   },
   "entrypoints": [
     "static/css/main.78a1cb3e.css",
-    "static/js/main.d9e61834.js"
+    "static/js/main.215fa97b.js"
   ]
 }
